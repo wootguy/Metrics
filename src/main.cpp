@@ -1,12 +1,13 @@
-#include "meta_init.h"
+#include "mmlib.h"
 #include <string>
-#include "misc_utils.h"
 #include <map>
 #include <set>
 #include "main.h"
 #include <map>
 #include <vector>
 #include <algorithm>
+
+using namespace std;
 
 // Description of plugin
 plugin_info_t Plugin_info = {
@@ -113,7 +114,7 @@ void print_metrics() {
 		if (percent < 0.1) {
 			other_total += iter.second;
 			other_types++;
-			continue;
+			//continue;
 		}
 
 		println("%-32s %8s (%.1f%%)", iter.first, format_int(iter.second), percent);
@@ -1162,6 +1163,7 @@ sentenceEntry_s* ENG_SequencePickSentence(const char* groupName, int pickMethod,
 }
 
 int ENG_GetFileSize(char* filename) {
+	println("Get file size for %s", filename);
 	g_call_counts[__FUNCTION__]++;
 	RETURN_META_VALUE(MRES_IGNORED, 0);
 }
